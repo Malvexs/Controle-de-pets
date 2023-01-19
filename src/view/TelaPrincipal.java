@@ -40,14 +40,14 @@ public class TelaPrincipal implements ActionListener {
 		titulo.setBounds(100, 10, 250, 30);
 		
 		addpet.setBounds(100, 320, 100, 30);
-        refresh.setBounds(100, 370, 100, 30);
-        edit.setBounds(250,320,100,30);
-        deletar.setBounds(250, 370, 100, 30);
-        vacinas.setBounds(480, 50, 100, 30);
+		refresh.setBounds(100, 370, 100, 30);
+		edit.setBounds(250,320,100,30);
+		deletar.setBounds(250, 370, 100, 30);
+		vacinas.setBounds(480, 50, 100, 30);
         
-        scroll_panel_pets.setViewportView(listaPets);
-        showPets();
-        scroll_panel_pets.setBounds(100, 50, 350, 120);
+		scroll_panel_pets.setViewportView(listaPets);
+		showPets();
+		scroll_panel_pets.setBounds(100, 50, 350, 120);
         
         janela.add(titulo);
         janela.add(addpet);
