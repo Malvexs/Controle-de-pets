@@ -16,8 +16,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-import modelo.Pet;
 import modelo.Vacina;
+
+/**
+ * Cria uma GUI para o CRUD de objetos da classe Vacina e listagem de informações.
+ * 
+ */
 
 public class PainelVacina implements ActionListener {
 
@@ -49,6 +53,12 @@ public class PainelVacina implements ActionListener {
 	
 	private int vac_list_index = -1;
 	
+	/**
+	 * Constroi um objeto da classe PainelVacina.
+	 * Cria a GUI dos formulários e botoões.
+	 * 
+	 * @param vacinas ArrayList de vacinas que serão manipulados.
+	 */
 	public PainelVacina(ArrayList<Vacina> vacinas){
 		
 		this.vacinas = vacinas;
@@ -120,7 +130,15 @@ public class PainelVacina implements ActionListener {
 		
 	}
 	
+	/**
+	 * Salva os dados da vacina selecionada no `scroll_panel_vacinas` nos campos de formularios.
+	 * Salva o index da vacina no ArrayList na variavel vac_list_index.
+	 * 
+	 */
 	public void editVacina() {
+		
+		//salva o index da vacina no array para futura alteração
+		vac_list_index = listaVacinas.getSelectedIndex();
 						
 		jt_n.setText(vacinas.get(vac_list_index).getNome());
 		jt_l.setText(vacinas.get(vac_list_index).getLab());
@@ -135,8 +153,11 @@ public class PainelVacina implements ActionListener {
 		
 	}
 	
-	
-	private void showVacinas() { //mostra todos os usuarios no scrollPane
+	/**
+	 * Lista o nome e data de todas as vacinas no objeto `scroll_panel_vacinas`.
+	 * 
+	 */
+	public void showVacinas() { 
 			
 			String l[] = new String[vacinas.size()];
 			
@@ -160,6 +181,11 @@ public class PainelVacina implements ActionListener {
 			
 		}
 	
+	/**
+	 * Cria um objeto da classe Vacina utilizando os dados dos formulários e então
+	 * adiciona esse objeto no ArrayList vacinas.
+	 * 
+	 */
 	private void addVacina() {
 		
 		if(
@@ -196,12 +222,12 @@ public class PainelVacina implements ActionListener {
 	        } catch (ParseException e1) {
 	        }
 			
-			Vacina vacina = new Vacina(vnome, datavac, vlab, 1, 0, "0");
+			Vacina vacina = new Vacina(vnome, datavac, vlab, vserial, vir, jt_p.getText());
 			
 			if(vac_list_index == -1) {
 				vacinas.add(vacina);
 				
-				JOptionPane.showMessageDialog(null, "Vacina adicionada com sucesso!", "SUCESS", 
+				JOptionPane.showMessageDialog(null, "Vacina ADICIONADA com sucesso!", "SUCESS", 
 						JOptionPane.INFORMATION_MESSAGE);
 			}else {
 				vacinas.set(vac_list_index, vacina);
@@ -213,6 +239,11 @@ public class PainelVacina implements ActionListener {
 		}
 	}
 
+	/**
+	 * O método escuta uma ação executada nos botões.
+	 * Executa uma ação dependendo de qual botão foi pressionado.
+	 * 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
@@ -224,8 +255,6 @@ public class PainelVacina implements ActionListener {
 		}else
 		if(e.getSource() == editvac) {
 			if(listaVacinas.getSelectedIndex() > -1) {
-				
-				vac_list_index = listaVacinas.getSelectedIndex();
 				
 				editVacina();
 				
@@ -239,7 +268,7 @@ public class PainelVacina implements ActionListener {
 		if(e.getSource() == deletar) {
 			if(listaVacinas.getSelectedIndex() > -1) {
 				vacinas.remove(listaVacinas.getSelectedIndex());
-				JOptionPane.showMessageDialog(null, "Vacina REMOVIDa com sucesso!", "SUCESS", 
+				JOptionPane.showMessageDialog(null, "Vacina REMOVIDA com sucesso!", "SUCESS", 
 						JOptionPane.INFORMATION_MESSAGE);
 				showVacinas();
 			}

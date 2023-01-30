@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Formatter;
+
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,6 +16,10 @@ import javax.swing.JTextField;
 
 import modelo.Pet;
 
+/**
+ * Cria uma GUI para o CRUD de objetos da classe `Pet`.
+ * 
+ */
 public class PainelPet implements ActionListener {
 	
 	private JFrame janela = new JFrame("Pet");
@@ -41,6 +45,12 @@ public class PainelPet implements ActionListener {
 	
 	private int pet_list_index = -1;
 	
+	/**
+	 * Constroi um objeto da classe `PainelPet' para o CRUD de dados.
+	 * Cria a GUI dos formulários e botoões.
+	 * 
+	 * @param pets ArrayList de objetos da classe `Pet` que serão manipulados.
+	 */
 	public PainelPet(ArrayList<Pet> pets){
 		
 		this.pets = pets;
@@ -93,6 +103,12 @@ public class PainelPet implements ActionListener {
 		
 	}
 	
+	/**
+	 * Adiciona as informações do Pet selecionado aos formularios para serem alteradas.
+	 * 
+	 * 
+	 * @param pet_list_index Index do objeto Pet do ArrayList<Pet> que será editado.
+	 */
 	public void editPet(int pet_list_index) {
 		
 		this.pet_list_index = pet_list_index;
@@ -112,7 +128,12 @@ public class PainelPet implements ActionListener {
 		jt_t.setText(pets.get(pet_list_index).getTemperamento());
 	}
 
-
+	/**
+	 * Controla o evento do botão `save`.
+	 * Se `pet_list_index` for igual a -1, um novo objeto Pet será criado e adicionado ao
+	 * ArrayList<Pet>. 
+	 * Caso contrario as informações do objeto Pet no ArrayList<Pet> serão alteradas.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
@@ -150,15 +171,16 @@ public class PainelPet implements ActionListener {
 				try {
 					dataNasc1 = TelaPrincipal.formatter.parse(pdata_nasc);			
 		        } catch (ParseException e1) {
+		        	
 		        }
-				
+					
 				Pet pet = new Pet(pnome, ptemp, pesp, praca, 
 						psexo, dataNasc1, ppeso);
 				
 				if(pet_list_index == -1) {
 					pets.add(pet);
 					
-					JOptionPane.showMessageDialog(null, "Pet adicionado com sucesso!", "SUCESS", 
+					JOptionPane.showMessageDialog(null, "Pet ADICIONADO com sucesso!", "SUCESS", 
 							JOptionPane.INFORMATION_MESSAGE);
 				}else {
 					pet.setVacinas(pets.get(pet_list_index).getVacinas());

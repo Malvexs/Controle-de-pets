@@ -2,6 +2,12 @@ package modelo;
 
 import java.util.*;
 
+/**
+ * Classe utilizada para representar uma vacina.
+ * 
+ *
+ */
+
 public class Vacina {
 
 	private String nome;
@@ -10,6 +16,17 @@ public class Vacina {
 	private int serial;
 	private int intervalRev;
 	private String intervalTipo;
+	
+	/**
+	 * Cria um objeto da classe Vacina.
+	 * 
+	 * @param nome nome da vacina.
+	 * @param dataVac data de vacinação.
+	 * @param lab laboratório responsável pela vacinação.
+	 * @param serial serial da vacina.
+	 * @param intervalRev periodo de revacinação.
+	 * @param intervalTipo periodo. ex: Anual
+	 */
 	
 	public Vacina(String nome, Date dataVac, String lab, 
 			      int serial, int intervalRev, String intervalTipo) {
@@ -20,6 +37,7 @@ public class Vacina {
 		this.intervalRev = intervalRev;
 		this.intervalTipo = intervalTipo;
 	}
+
 	
 	public String getNome() {
 		return this.nome;

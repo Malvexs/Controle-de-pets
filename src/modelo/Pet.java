@@ -2,6 +2,11 @@ package modelo;
 
 import java.util.*;
 
+/**
+ * Classe utilizada para representar um pet.
+ *
+ * 
+ */
 public class Pet extends Animal {
 
 	private String temperamento;
@@ -12,7 +17,17 @@ public class Pet extends Animal {
 	private double pesoKg;
 	private ArrayList<Vacina> vacinas = new ArrayList<>();
 
-	
+	/**
+	 * Cria um objeto da classe Pet
+	 * 
+	 * @param nome nome do animal.
+	 * @param temperamento temperamento do animal.
+	 * @param especie especie do animal.
+	 * @param raca raça do animal.
+	 * @param sexo sexo do animal.
+	 * @param dataNasc data de nascimento do animal.
+	 * @param pesoKg peso em kg do animal.
+	 */
 	public Pet(String nome, String temperamento, String especie,
 				String raca, char sexo, Date dataNasc, double pesoKg) {
 		
